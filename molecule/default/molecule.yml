@@ -1,0 +1,37 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: instance
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu1804}-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    networks:
+      - name: ${MOLECULE_DISTRO:-ubuntu1804}-${CI_PROJECT_NAME:-default}
+    privileged: true
+    pre_build_image: true
+    groups:
+      - all
+provisioner:
+  name: ansible
+  playbooks:
+    converge: ${MOLECULE_PLAYBOOK:-converge.yml}
+  inventory:
+    group_vars:
+      all:
+        users:
+          - username: foobar
+            password: ovwU1XInVWCDQ
+            name: "Foo Bar 1"
+            shell: "/bin/bash"
+    host_vars:
+      instance-1:
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

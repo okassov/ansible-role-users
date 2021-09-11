@@ -1,0 +1,19 @@
+---
+all:
+  children:
+    test_hosts:
+  vars:
+    users:
+      - username: foobar
+        name: "Foo Bar"
+        password: "LbCnhuZEV2vYI" # test123 in hash format. Password created with mkpasswd command.
+
+test_hosts:
+  hosts:
+    test-1:
+      ansible_host: 1.1.1.1
+    test-2:
+      ansible_host: 2.2.2.2
+    test-3:
+      ansible_host: 3.3.3.3
+

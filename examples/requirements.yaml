@@ -1,0 +1,3 @@
+---
+- src: git+git@gitlab.alabs.space:devops/ansible/ansible-roles/users.git
+  version: v0.1.0

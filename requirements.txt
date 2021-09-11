@@ -1,0 +1,7 @@
+wheel >= 0.36.2
+setuptools_rust >= 0.12.1
+ansible >= 4.3.0
+ansible-base >= 2.10.12
+ansible-lint >= 5.1.2
+molecule >= 3.3.4
+molecule-docker >= 0.2.4
